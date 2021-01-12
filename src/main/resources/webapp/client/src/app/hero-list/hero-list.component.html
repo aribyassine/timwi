@@ -1,0 +1,33 @@
+<div class="main">
+  <mat-card class="card">
+    <mat-card-title>Heroes List</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let hero of heroes">
+          <img mat-list-avatar src="{{hero.thumbnail}}" alt="{{hero.name}}">
+          <h3 mat-line>{{hero.name}}</h3>
+          <h3 mat-line>
+            <a mat-button (click)="add(hero)">Add {{hero.name}} to my team</a>
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-title>My team</mat-card-title>
+    <div *ngFor="let hero of heroes">
+      <mat-card *ngIf="hero.inTeam"  class="card">
+        <mat-card-header>
+          <mat-card-title>"{{hero.name}}"</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{hero.thumbnail}}" alt="{{hero.name}}">
+        <mat-card-content>
+          <p>{{hero.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="remove(hero)">DELETE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>
